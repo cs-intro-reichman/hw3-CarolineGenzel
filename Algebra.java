@@ -6,7 +6,7 @@
 public class Algebra {
 	public static void main(String args[]) {
 	    // Tests some of the operations
-	    System.out.println(plus(2,3));   // 2 + 3
+		System.out.println(plus(2,3));   // 2 + 3
 	    System.out.println(minus(7,2));  // 7 - 2
    		System.out.println(minus(2,7));  // 2 - 7
  		System.out.println(times(3,4));  // 3 * 4
@@ -20,48 +20,69 @@ public class Algebra {
    		System.out.println(mod(120,6));  // 120 % 6    
    		System.out.println(sqrt(36));
 		System.out.println(sqrt(263169));
-   		System.out.println(sqrt(76123));
+   	    System.out.println(sqrt(76123));
 	}  
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int sum=x1;
+		for(int i=1; i<=x2;i++){
+			sum++;
+		}
+		return sum;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		for(int i=1;i<=x2;i++){
+			x1--;
+		}
+		return x1;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-        // Replace the following statement with your code
-		return 0;
+        int sum=0;
+		for(int i=1;i<=x2;i++){
+			sum=plus(sum, x1);
+		}
+		return sum;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+		int sum=1;
+			for(int i=1;i<=n;i++){
+				sum=times(sum, x);
+			}
+			return sum;
+	
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-        // Replace the following statement with your code
-		return 0;
+       int num=0;
+	   for(int i=1;i<=x1;i=plus(i, x2)){
+		num++;
+	   }
+
+		return num;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-        // Replace the following statement with your code
-		return 0;
+		int num=x1;
+		for(int i=1;i<=x1;i=plus(i, x2)){
+		 num = minus(x1, x2);
 	}	
+	return num; }
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-        // Replace the following statement with your code
-		return 0;
+		int num=2;
+     while(times(num, num)!=x){
+		num++;
+	 }
+		return num;
 	}	  	  
 }
