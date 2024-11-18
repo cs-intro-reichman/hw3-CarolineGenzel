@@ -17,10 +17,10 @@ public class Algebra {
    		System.out.println(div(5,5));    // 5 / 5  
    		System.out.println(div(25,7));   // 25 / 7
    		System.out.println(mod(25,7));   // 25 % 7
-   		System.out.println(mod(120,6));  // 120 % 6    
-   		System.out.println(sqrt(36));
+   		System.out.println(mod(120,6));  // 120 % 6   
+		System.out.println(sqrt(36));
 		System.out.println(sqrt(263169));
-   	    System.out.println(sqrt(76123));
+		   System.out.println(sqrt(76123));
 	}  
 
 	// Returns x1 + x2
@@ -62,8 +62,11 @@ public class Algebra {
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
        int num=0;
-	   for(int i=1;i<=x1;i=plus(i, x2)){
+	   for(int i=0;i<=x1;i=plus(i, x2)){
 		num++;
+	   }
+	   if(times(x2, num)>x2){
+		num--;
 	   }
 
 		return num;
@@ -71,11 +74,10 @@ public class Algebra {
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		int num=x1;
-		for(int i=1;i<=x1;i=plus(i, x2)){
-		 num = minus(x1, x2);
-	}	
-	return num; }
+		int num=div(x1,x2);
+		int answer= minus(x1, times(num, x2));
+	
+	return answer; }
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
