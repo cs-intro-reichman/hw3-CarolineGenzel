@@ -42,7 +42,7 @@ public class Algebra {
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-        int sum=0;
+		int sum=0;
 		for(int i=1;i<=x2;i++){
 			sum=plus(sum, x1);
 		}
