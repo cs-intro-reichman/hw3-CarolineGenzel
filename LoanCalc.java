@@ -35,8 +35,8 @@ public class LoanCalc {
 	private static double endBalance(double loan, double rate, int n, double payment) {	
 		int i=0;
 		double money=loan;
-		while (i<= n && (money - payment)* (1+ rate/100)<=0) {
-			money= (money - payment)* (1+ rate/100);
+		while (i< n) {
+			money= (money - payment)* (1+ rate/100.0);
 			i++;
 		}
 		return money;
