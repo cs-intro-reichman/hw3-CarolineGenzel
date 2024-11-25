@@ -61,14 +61,14 @@ public class Anagram {
 	public static String preProcess(String str) {
 		
 		String wordEnd="";
-		for(int i=0;i<str.length();i++){
-			if (str.charAt(i)!= ' ' && str.charAt(i)!= '!' && str.charAt(i)!= ',' && str.charAt(i)!='.' && str.charAt(i)!='?') {
-				 wordEnd+=str.charAt(i);
+		for (int i = 0; i < str.length(); i++) {
+			char current = str.charAt(i);
+			if ((current >= 'A' && current <= 'Z') || (current >= 'a' && current <= 'z') || current == ' ') {
+				wordEnd += current;
 			}
-
 		}
 		return wordEnd.toLowerCase();
-	} 
+	}
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
