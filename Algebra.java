@@ -31,7 +31,7 @@ public class Algebra {
 				sum++;
 		} }
 		else {
-			for(int i=1;i<minus(0, x2);i++){
+			for(int i=1;i<=minus(0, x2);i++){
 				sum--;
 			}
 		}
@@ -44,7 +44,7 @@ public class Algebra {
 		int sum=x1;
 		if(x2>0){
 			for(int i=1;i<=x2;i++){
-				x1--;
+				sum--;
 		}}
 		else {
 			for(int i=x2;i<0;i++){
@@ -59,27 +59,33 @@ public class Algebra {
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		int sum=0;
+		if(x1==0 || x2==0) {
+			sum=0;}
 		if(x1>0 && x2>0){
 		for(int i=1;i<=x2;i++){
 			sum=plus(sum, x1);
 		}}
+
 		if(x1>0 &&x2<0){
 			x2=minus(0, x2);
 			for(int i=1;i<=x2;i++){
 				sum=plus(sum, x1);
-		}
-		sum=minus(0, sum);
-	}
-	if(x1<0 && x2>0){
-		x1=minus(0, x1);
-		for(int i=1;i<=x2;i++){
-			sum=plus(sum, x1);
-	}
-}
-if (x1==0 || x2==0) {
-	sum=0;
-	
-}
+		}}
+
+	    if(x1<0 && x2>0){
+		   x1=minus(0, x1);
+	       for(int i=1;i<=x2;i++){
+		     	sum=plus(sum, x1);
+				}
+				sum=minus(0, sum);
+			}
+	    if(x1<0 && x2<0){
+		   x1=minus(0, x1);
+		   x2=minus(0, x2);
+		   for(int i=1;i<=x2;i++){
+			  sum=plus(sum, x1);
+		}}
+        
 		return sum;
 	}
 
@@ -92,16 +98,26 @@ if (x1==0 || x2==0) {
 			if (x==0) {
 				return 0;
 			}
-			for(int i=0; i<n-1;i++){
-				sum= times(sum, x);
+			if (x>0) {
+				for(int i=0; i<n-1;i++){
+					sum= times(sum, x); }
 			}
+			else { 
+				x=minus(0, x);
+				for(int i=0; i<n-1;i++){
+					sum= times(sum, x);
+			}
+			if (mod(n, 2)==0) {
+				sum=minus(0, sum);
+			}}
+		
+			
 			return sum;
 	
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-       int n1=x1;
 	   int c=0;
 	   boolean negNum=false;
 	   if (x1==0) {
@@ -119,13 +135,16 @@ if (x1==0 || x2==0) {
 		x2=minus(0, x2);
 		negNum=true;
 	   }
-	   while (n1>0 && ( n1>x2 || n1==x2) ){
-		n1=minus(n1, x2);
+	   int sum=x1;
+	   while (sum>0 && ( sum>x2 || sum==x2) ){
+		sum=minus(sum, x2);
 		c++;
 	   }
+
 	   if (negNum== true) {
 		return minus(0, c);
-	   } else return c;
+	   } 
+	   else return c;
 	}
 
 	// Returns x1 % x2
