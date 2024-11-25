@@ -63,7 +63,7 @@ public class Anagram {
 		String wordEnd="";
 		for (int i = 0; i < str.length(); i++) {
 			char current = str.charAt(i);
-			if ((current >= 'A' && current <= 'Z') || (current >= 'a' && current <= 'z') || current == ' ') {
+			if ((current >= 'A' && current <= 'Z') || (current >= 'a' && current <= 'z') ) {
 				wordEnd += current;
 			}
 		}
