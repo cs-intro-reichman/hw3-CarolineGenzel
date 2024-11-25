@@ -17,7 +17,6 @@ public class LoanCalc {
 		// Computes the ending balance of the loan, given a periodical payment
 		double payment = 10000;
 		double endBalance = endBalance(loan, rate, n, payment);
-		System.out.println("If your periodical payment is " + payment + ", your ending balance is: " + (int)endBalance);		
 		// Computes the periodical payment using brute force search
 		System.out.print("\nPeriodical payment, using brute force: ");
 		System.out.println((int) bruteForceSolver(loan, rate, n, epsilon));
