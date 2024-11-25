@@ -1,3 +1,4 @@
+import java.util.Random;
 
 /** Functions for checking if a given string is an anagram. */
 public class Anagram {
@@ -29,31 +30,35 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		boolean check=false;
-		String newStr1=preProcess(str1);
-		String newStr2=preProcess(str2);
-		
-		if(newStr1.length()!=newStr2.length()){
-			return check;
-		}
-		for(int i=0;i<newStr1.length();i++){
-			char tav = newStr1.charAt(i);
-			for(int j=0;j<newStr1.length();j++){
-				if (newStr2.charAt(j)== tav) {
-					newStr2= newStr2.substring(0, j)+newStr2.substring(j+1);
-					check=true;
-					break;
-				}
-			}
-			
-		}
-		return check;
+		String s1 = preProcess(str1);
+        String s2 = preProcess(str2);
+        int j=0, length1=0, length2=0;
+        if (s1.length() != s2.length()){
+            return false;
+        }
+        for (int i=0; i<s1.length();i++){
+            j=0;
+            char c = s1.charAt(i);
+            while (j<s1.length()){
+                if (s1.charAt(j)==c){
+                    length1++;
+                }
+                if (s2.charAt(j) == c){
+                    length2++;
+                }
+                j++;
+            }
+            if (length1 != length2){
+                return false;
+            }
+        }
+        return true;
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
-	private static String preProcess(String str) {
+	public static String preProcess(String str) {
 		
 		String wordEnd="";
 		for(int i=0;i<str.length();i++){
@@ -68,16 +73,17 @@ public class Anagram {
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		String Newstr= "";
-		while (str.length()>0) {
-			int place= (int) (Math.random()*str.length());
-			char tav = str.charAt(place);
-			str=str.substring(0, place)+str.substring(place+1);
-			Newstr+=tav;
-		}
-			
-
-		
-		return Newstr;
+		String s = preProcess(str);
+        String result = "";
+        String temp="";
+        int length = s.length();
+        for (int i=0; i<length; i++){
+            int index = new Random().nextInt(s.length());
+         temp += s.charAt(index);
+         s = s.substring(0, index) + s.substring(index+1);
+         result += temp;
+         temp = "";
+        }
+        return result;
 	}
 }
