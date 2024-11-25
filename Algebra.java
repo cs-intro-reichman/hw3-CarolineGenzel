@@ -29,7 +29,7 @@ public class Algebra {
 		if (x2>0) {
 			for(int i=1; i<=x2;i++){
 				sum++;
-		}
+		} }
 		else {
 			for(int i=1;i<minus(0, x2);i++){
 				sum--;
